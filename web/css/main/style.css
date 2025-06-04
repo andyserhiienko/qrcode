@@ -1,0 +1,32 @@
+html,body {
+  font-family: sans-serif;
+  padding: 0px;
+  margin:0px;
+  background-color: rgba(249, 249, 249,1);
+}
+
+.css-main-table{
+  display:table;
+  width:100%;
+  height:100vh;
+  table-layout: fixed;
+  
+  padding:0px;
+  margin:0px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.css-main-td{
+  display:table-cell;
+  width:100%;
+  height:100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.css-main-visibility-hidden{
+  visibility:hidden;
+}
