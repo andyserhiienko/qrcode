@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/linkprocessor/style.css',
     ];
     public $js = [
+        'js/linkprocessor/script.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
