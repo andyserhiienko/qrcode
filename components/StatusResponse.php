@@ -1,0 +1,48 @@
+<?php
+namespace app\components;
+
+use Yii;
+
+class StatusResponse
+{
+    public function handle($code)
+    {
+        $method = 'handle' . $code;
+        return method_exists($this, $method)
+            ? $this->$method()
+            : $this->handleUnknown($code);
+    }
+
+    private function handle200()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->statusCode = 200;
+
+        return [
+            'success' => true,
+            'message' => 'OK',
+        ];
+    }
+
+    private function handle404()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->statusCode = 404;
+
+        return [
+            'success' => false,
+            'error' => 'Not Found',
+        ];
+    }
+
+    private function handleUnknown($code)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->statusCode = 502;
+
+        return [
+            'success' => false,
+            'error' => "Unknown status: $code",
+        ];
+    }    
+}
