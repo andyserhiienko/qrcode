@@ -27,8 +27,7 @@ class ResourceController extends Controller
             $code = Yii::$app->externalApi->checkResource($model->url);
 
             if($code == 200){
-                $hash = md5($model->url);
-                
+                $hash = uniqid();
             }
 
             return Yii::$app->responseHandler->handle($code);
