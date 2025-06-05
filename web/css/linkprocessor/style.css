@@ -46,6 +46,18 @@
     display: block;
 }
 
+.css-linkprocessor-satatus{
+  position: relative;
+  display: block;
+
+  width:100%;
+  margin-top:10px;
+  
+  text-align: center;
+  font-size: 14px;
+  color:rgba(235, 64, 52, 1);
+}
+
 .css-linkprocessor-qrfield{
     position: relative;
     display: inline-block;

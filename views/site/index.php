@@ -7,6 +7,9 @@ AppAsset::register($this);
 $this->registerJsFile('https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js', [
     'position' => \yii\web\View::POS_HEAD,
 ]);
+$this->registerJsFile('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js', [
+    'position' => \yii\web\View::POS_HEAD,
+]);
 
 $this->title = 'Grand QR-code maker';
 ?>
@@ -25,5 +28,7 @@ $this->title = 'Grand QR-code maker';
             <button class="js-linkprocessor-form-button-check css-linkprocessor-form-button-send"><span class="js-linkprocessor-form-button-send-text-ok">ok</span></button>
           </span>
         </span>
+
+        <span class="css-linkprocessor-satatus js-linkprocessor-request-satatus"></span>
       </span>
     </span>

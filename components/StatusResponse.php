@@ -35,6 +35,16 @@ class StatusResponse
         ];
     }
 
+    private function handle400()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->statusCode = 400;
+        return [
+            'success' => false,
+            'error' => 'This URL is not available'
+        ];
+    }
+
     private function handleUnknown($code)
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -42,7 +52,7 @@ class StatusResponse
 
         return [
             'success' => false,
-            'error' => "Unknown status: $code",
+            'error' => 'Данный URL недоступен',
         ];
     }    
 }

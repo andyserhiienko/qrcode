@@ -7,7 +7,9 @@ class LinkProcessor
       },
       'html':{
         'elements':{
+            'csrf':$('meta[name="csrf-token"]').attr('content'),
             'qrfield':$('.js-linkprocessor-qrfield'),
+            'requestSatatus':$('.js-linkprocessor-request-satatus'),
         },
         'forms':{
           'checklink':{
@@ -28,9 +30,6 @@ class LinkProcessor
             'isCanCheck':true
           }
         }
-      },
-      'notifications':{
-        'notAvailable':'Данный URL не доступен',
       }
     };
     this.init();
@@ -42,8 +41,7 @@ class LinkProcessor
 
   eventWatcher(){
     this.systemSettings.html.forms.checklink.buttonSend.on('click',()=>{
-      this.systemSettings.statuses.forms.checklink.isCanCheck && 
-      this.check();
+      this.isCanCheck() && this.check();
     });
   }
 
@@ -62,32 +60,60 @@ class LinkProcessor
   }
 
   check(){
-    this.loading(true);
     const postData = {
-      'link':this.systemSettings.html.forms.checklink.input.val()
+      'url':this.systemSettings.html.forms.checklink.input.val()
     };
+    this.setCanCheck(false);
     this.inputView(false);
+    this.setStatus('');
+    this.loading(true);
 
-    if(this.isValidUrl(postData.link)){
-      axios.post(this.systemSettings.requests.check, postData)
+    if(this.isValidUrl(postData.url)){  
+      axios.post(this.systemSettings.requests.check, postData, {
+      headers: {'X-CSRF-Token': this.withCSRFToken()}})
         .then((response) => this.successNewID(response))
-        .catch((error) => this.handleError(error,5));
+        .catch((error) => this.handleError(error));
     }else{
+      this.setCanCheck(true);
+      this.loading(false);
       this.inputView(true);
     }
   }
 
+  setCanCheck(state = true){
+    this.systemSettings.statuses.forms.checklink.isCanCheck = state;
+  }
+
+  isCanCheck(){
+    return this.systemSettings.statuses.forms.checklink.isCanCheck;
+  }
+
+  setStatus(string){
+    this.systemSettings.html.elements.requestSatatus.html(string);
+  }
+
   successNewID(response){
+    this.setCanCheck(true);
+    this.loading(false);
     console.log(response);
   }
   
   handleError(error){
-    console.log(error);
+    this.setCanCheck(true);
+    this.loading(false);
+    this.inputView(true);
+
+    error?.message && this.setStatus(error?.message);
+    error.response?.data?.error && this.setStatus(error.response?.data?.error);
   }
 
   isValidUrl(string){
     const pattern = /^(https?:\/\/)[\w\-]+(\.[\w\-]+)+[/#?]?.*$/i;
     return pattern.test(string);
+  }
+
+  withCSRFToken(){
+    return this.systemSettings.html.elements.csrf;//document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   }
 
   buildQR(url){

@@ -19,8 +19,22 @@ class ResourceController extends Controller
 
     public function actionCheck()
     {
-        $url = 'https://tenor.com/';
-        $code = Yii::$app->externalApi->checkResource($url);
-        return Yii::$app->responseHandler->handle($code);
+        $body = Yii::$app->request->getBodyParams();
+        $model = new \app\models\CheckUrlForm();
+        $model->load(Yii::$app->request->getBodyParams(),'');
+
+        if($model->validate()){
+            $code = Yii::$app->externalApi->checkResource($model->url);
+
+            if($code == 200){
+                $hash = md5($model->url);
+                
+            }
+
+            return Yii::$app->responseHandler->handle($code);
+        }else{
+            return Yii::$app->responseHandler->handle(400);
+        }     
     }
+
 }
