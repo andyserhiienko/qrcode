@@ -122,7 +122,7 @@ class LinkProcessor
   }
 
   withCSRFToken(){
-    return this.systemSettings.html.elements.csrf;//document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    return this.systemSettings.html.elements.csrf;
   }
 
   buildQR(url){

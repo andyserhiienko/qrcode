@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class LetsController extends Controller
 {
@@ -33,6 +34,6 @@ class LetsController extends Controller
             return $this->redirect($row['full']);
         }
         
-        return Yii::$app->responseHandler->handle(404);
+        throw new NotFoundHttpException('Страница не найдена.');
     }
 }
