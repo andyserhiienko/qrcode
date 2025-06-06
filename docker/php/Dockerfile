@@ -19,3 +19,6 @@ COPY . /var/www/genomed.tt/
 
 # Set Work-directory
 WORKDIR /var/www/genomed.tt
+
+RUN mkdir -p web/uploads/qr-codes \
+ && chown -R www-data:www-data web/uploads

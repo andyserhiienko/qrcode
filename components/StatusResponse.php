@@ -24,6 +24,16 @@ class StatusResponse
         ];
     }
 
+    private function handle400()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->statusCode = 400;
+        return [
+            'success' => false,
+            'error' => 'This URL is not available'
+        ];
+    }
+
     private function handle404()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -35,13 +45,13 @@ class StatusResponse
         ];
     }
 
-    private function handle400()
+    private function handle500()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        Yii::$app->response->statusCode = 400;
+        Yii::$app->response->statusCode = 500;
         return [
             'success' => false,
-            'error' => 'This URL is not available'
+            'error' => 'Something wrong'
         ];
     }
 

@@ -10,6 +10,7 @@ class LinkProcessor
             'csrf':$('meta[name="csrf-token"]').attr('content'),
             'qrfield':$('.js-linkprocessor-qrfield'),
             'requestSatatus':$('.js-linkprocessor-request-satatus'),
+            'preparedLink':$('.js-linkprocessor-prepared-link'),
         },
         'forms':{
           'checklink':{
@@ -66,12 +67,14 @@ class LinkProcessor
     this.setCanCheck(false);
     this.inputView(false);
     this.setStatus('');
+    this.setPreparedLink('','');
     this.loading(true);
+    this.renderQR('');
 
     if(this.isValidUrl(postData.url)){  
       axios.post(this.systemSettings.requests.check, postData, {
       headers: {'X-CSRF-Token': this.withCSRFToken()}})
-        .then((response) => this.successNewID(response))
+        .then((response) => this.successCheck(response))
         .catch((error) => this.handleError(error));
     }else{
       this.setCanCheck(true);
@@ -88,14 +91,20 @@ class LinkProcessor
     return this.systemSettings.statuses.forms.checklink.isCanCheck;
   }
 
+  setPreparedLink(text,link){
+    this.systemSettings.html.elements.preparedLink.html(text);
+    this.systemSettings.html.elements.preparedLink.attr('href',link);
+  }
+
   setStatus(string){
     this.systemSettings.html.elements.requestSatatus.html(string);
   }
 
-  successNewID(response){
+  successCheck(response){
     this.setCanCheck(true);
     this.loading(false);
-    console.log(response);
+    response?.data?.data?.qr && this.renderQR(response.data.data.qr);
+    response?.data?.data?.link && this.setPreparedLink(response.data.data.link,response.data.data.link);
   }
   
   handleError(error){
@@ -103,8 +112,8 @@ class LinkProcessor
     this.loading(false);
     this.inputView(true);
 
-    error?.message && this.setStatus(error?.message);
-    error.response?.data?.error && this.setStatus(error.response?.data?.error);
+    error?.message && this.setStatus(error.message);
+    error.response?.data?.error && this.setStatus(error.response.data.error);
   }
 
   isValidUrl(string){
@@ -126,9 +135,9 @@ class LinkProcessor
       });    
   }
 
-  renderQR(base64String){
+  renderQR(path){
     this.systemSettings.html.elements.qrfield
-      .css('background-image',`url('${base64String}')`);
+      .css('background-image',`url('${path}')`);
   }
 }
 

@@ -24,6 +24,10 @@ $config = [
             'class' => 'app\components\StatusResponse',
         ],
 
+        'shortUrlManager' => [
+            'class' => 'app\components\ShortUrlManager',
+        ],
+
         'externalApi' => [
             'class' => 'app\components\ExternalApiClient',
         ],        

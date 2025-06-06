@@ -21,6 +21,7 @@ $this->title = 'Grand QR-code maker';
                 </span>
             </span>
         </span>
+        <span class="css-linkprocessor-prepared-link"><a class="js-linkprocessor-prepared-link" target="_blank"></a></span>
 
         <span class="css-linkprocessor-block-wrapper">
           <span class="css-linkprocessor-form">
@@ -28,7 +29,6 @@ $this->title = 'Grand QR-code maker';
             <button class="js-linkprocessor-form-button-check css-linkprocessor-form-button-send"><span class="js-linkprocessor-form-button-send-text-ok">ok</span></button>
           </span>
         </span>
-
         <span class="css-linkprocessor-satatus js-linkprocessor-request-satatus"></span>
       </span>
     </span>
