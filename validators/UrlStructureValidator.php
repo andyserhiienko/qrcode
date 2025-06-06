@@ -11,6 +11,11 @@ class UrlStructureValidator extends Validator
 	{
 		$url = $model->$attribute;
 
+		if(mb_strlen($url) > 185){
+			$this->addError($model,$attribute,'Недопустимый размер');
+			return;
+		}
+
 		if(!filter_var($url,FILTER_VALIDATE_URL)){
 			$this->addError($model,$attribute,'URL имеет некорректный формат');
 			return;

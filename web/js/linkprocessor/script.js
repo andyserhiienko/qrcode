@@ -31,6 +31,9 @@ class LinkProcessor
             'isCanCheck':true
           }
         }
+      },
+      'props':{
+        'maxLengthOfLink':185
       }
     };
     this.init();
@@ -118,7 +121,7 @@ class LinkProcessor
 
   isValidUrl(string){
     const pattern = /^(https?:\/\/)[\w\-]+(\.[\w\-]+)+[/#?]?.*$/i;
-    return pattern.test(string);
+    return pattern.test(string) && (string.length <= this.systemSettings.props.maxLengthOfLink)
   }
 
   withCSRFToken(){
