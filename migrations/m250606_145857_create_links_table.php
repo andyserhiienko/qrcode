@@ -16,7 +16,7 @@ class m250606_145857_create_links_table extends Migration
             'id' => $this->primaryKey(),
             'full' => $this->string(185)->notNull(),
             'short' => $this->string(10)->notNull()->unique(),
-            'qr' => $this->string(35)->notNull(),
+            'qr' => $this->string(50)->notNull(),
             'md5' => $this->string(35)->notNull()
         ]);
 

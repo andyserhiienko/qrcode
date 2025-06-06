@@ -61,6 +61,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'lets/go/<hash:[\w-]+>' => 'lets/go'
             ],
         ],
     ],

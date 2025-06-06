@@ -15,6 +15,7 @@ class m250606_150023_create_logger_table extends Migration
         $this->createTable('{{%logger}}',[
             'id' => $this->primaryKey(),
             'ip' => $this->string(18)->notNull(),
+            'visit' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'id_link' => $this->integer()->notNull(),
         ]);
 

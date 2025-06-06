@@ -14,7 +14,7 @@ class m250606_150203_create_counter_table extends Migration
     {
         $this->createTable('{{%counter}}', [
             'id' => $this->primaryKey(),
-            'count' => $this->integer()->notNull(),
+            'count' => $this->integer()->notNull()->defaultValue(0),
             'id_link' => $this->integer()->notNull(),
         ]);
 
