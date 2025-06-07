@@ -40,6 +40,93 @@ REQUIREMENTS
 The minimum requirement by this project template that your Web server supports PHP 7.4.
 
 
+Installation method No. 1 By Git
+--------------------------------
+
+### 1. Install Apache on Ubuntu::
+sudo apt update
+sudo apt install apache2
+
+### 2. Install required PHP packages and libraries:
+sudo apt install -y libzip-dev zip unzip libpng-dev libjpeg-dev libonig-dev libxml2-dev php8.2 php8.2-mysql php8.2-zip php8.2-gd php8.2-mbstring php8.2-xml
+
+### 3. Create the project directory:
+sudo mkdir /var/www/myproject.tt
+
+### 4. Set permissions:
+sudo chmod 755 -R /var/www/myproject.tt
+
+### 5. Edit the system hosts file:
+sudo nano /etc/hosts
+
+### 6. Add a host entry, save and close the file:
+127.0.0.1 myproject.tt
+
+### 7. Create a virtual host configuration:
+sudo nano /etc/apache2/sites-available/myproject.tt.conf
+
+### 8. Add the following configuration:
+<VirtualHost *:80>
+     ServerAdmin admin@myproject.tt
+     ServerName myproject.tt
+     ServerAlias www.myproject.tt
+     DocumentRoot /var/www/myproject.tt/web
+     #DirectoryIndex info.php
+
+     <Directory /var/www/myproject.tt/web>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+     </Directory>
+
+    <FilesMatch \.php$>
+      # For Apache version 2.4.10 and above, use SetHandler to run PHP as a fastCGI process server
+      SetHandler "proxy:unix:/run/php/php8.2-fpm.sock|fcgi://localhost"
+    </FilesMatch>
+
+     ErrorLog ${APACHE_LOG_DIR}/myproject.tt_error.log
+     CustomLog ${APACHE_LOG_DIR}/myproject.tt.tt_access.log combined
+</VirtualHost>
+
+### 9. Navigate to the project directory:
+/var/www/myproject.tt/
+
+### 10. Clone the repository:
+git clone https://github.com/andyserhiienko/qrcode.git .
+
+### 11. Create a directory for storing QR codes and set ownership:
+sudo mkdir /var/www/myproject.tt/web/uploads
+sudo chown -R www-data:www-data /var/www/myproject.tt/web/uploads
+
+### 12. Restart Apache:
+sudo systemctl restart apache2
+
+### 13. Open Yii2 database configuration file:
+sudo nano /var/www/myproject.tt/config/db.php
+
+### 14. Set database access parameters:
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;port=3306;dbname=genomed',
+    'username' => 'genomed_user',
+    'password' => '@bC12344321',
+    'charset' => 'utf8',
+
+    // Schema cache options (for production environment)
+    //'enableSchemaCache' => true,
+    //'schemaCacheDuration' => 60,
+    //'schemaCache' => 'cache',
+];
+
+### 15. Run database migrations:
+php yii migrate
+
+### 16. Open in your browser:
+http//:myproject.tt
+
+
+
 INSTALLATION
 ------------
 
