@@ -42,7 +42,7 @@ The minimum requirement by this project template that your Web server supports P
 Installation method No. 1 By Git
 --------------------------------
 
-### 1. Install Apache on Ubuntu::
+### 1. Install Apache on Ubuntu:
 <pre><code>sudo apt update</pre></code>
 <pre><code>sudo apt install apache2</pre></code>
 
