@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite
 
 # Copy Apache config
-COPY ./apache/default.conf /etc/apache2/sites-available/genomed.tt.conf
+COPY ./docker/apache/default.conf /etc/apache2/sites-available/genomed.tt.conf
 
 # Enable Our Project
 RUN a2ensite genomed.tt.conf && a2dissite 000-default.conf
