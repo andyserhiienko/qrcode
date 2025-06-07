@@ -39,7 +39,7 @@ REQUIREMENTS
 
 The minimum requirement by this project template that your Web server supports PHP 7.4.
 
-Installation method No. 1 By Git
+Installation way by Git
 --------------------------------
 
 ### 1. Install Apache on Ubuntu:
@@ -133,8 +133,8 @@ return [
 http//:myproject.tt
 
 
-Installation method No. 2 By Docker
------------------------------------
+Installation way by Docker
+---------------------------
 
 1. Download and install Docker Desktop:
 <pre><code>https://www.docker.com/products/docker-desktop/</pre></code>
