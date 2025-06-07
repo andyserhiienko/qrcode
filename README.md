@@ -66,30 +66,7 @@ sudo nano /etc/hosts
 sudo nano /etc/apache2/sites-available/myproject.tt.conf
 
 ### 8. Add the following configuration:
-```
-<VirtualHost *:80>
-     ServerAdmin admin@myproject.tt
-     ServerName myproject.tt
-     ServerAlias www.myproject.tt
-     DocumentRoot /var/www/myproject.tt/web
-     #DirectoryIndex info.php
-
-     <Directory /var/www/myproject.tt/web>
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride All
-        Order allow,deny
-        allow from all
-     </Directory>
-
-    <FilesMatch \.php$>
-      # For Apache version 2.4.10 and above, use SetHandler to run PHP as a fastCGI process server
-      SetHandler "proxy:unix:/run/php/php8.2-fpm.sock|fcgi://localhost"
-    </FilesMatch>
-
-     ErrorLog ${APACHE_LOG_DIR}/myproject.tt_error.log
-     CustomLog ${APACHE_LOG_DIR}/myproject.tt.tt_access.log combined
-</VirtualHost>
-```
+<pre><code>&lt;VirtualHost *:80&gt; ServerAdmin admin@myproject.tt ServerName myproject.tt ServerAlias www.myproject.tt DocumentRoot /var/www/myproject.tt/web #DirectoryIndex info.php &lt;Directory /var/www/myproject.tt/web&gt; Options Indexes FollowSymLinks MultiViews AllowOverride All Order allow,deny allow from all &lt;/Directory&gt; &lt;FilesMatch \.php$&gt; SetHandler "proxy:unix:/run/php/php8.2-fpm.sock|fcgi://localhost" &lt;/FilesMatch&gt; ErrorLog ${APACHE_LOG_DIR}/myproject.tt_error.log CustomLog ${APACHE_LOG_DIR}/myproject.tt_access.log combined &lt;/VirtualHost&gt; </code></pre>
 
 ### 9. Navigate to the project directory:
 /var/www/myproject.tt/
