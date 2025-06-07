@@ -39,7 +39,6 @@ REQUIREMENTS
 
 The minimum requirement by this project template that your Web server supports PHP 7.4.
 
-
 Installation method No. 1 By Git
 --------------------------------
 
@@ -130,6 +129,23 @@ return [
 ### 16. Open in your browser:
 http//:myproject.tt
 
+
+Installation method No. 2 By Docker
+-----------------------------------
+
+1. Download and install Docker Desktop:
+<pre><code>https://www.docker.com/products/docker-desktop/</pre></code>
+
+2. Open the terminal (If Windows, then enter the CMD command, which will open the terminal), enter the command:
+<pre><code>sudo docker run -d -p 8080:80 andyserhiienko/qrcode</pre></code>
+
+3. For Ubuntu, enter sudo nano /etc/hosts in the terminal, add the host and save the changes:
+<pre><code>127.0.0.1 genomed.tt</pre></code>
+
+3.1. For Windows, open the file C:\Windows\System32\drivers\etc\hosts in a block and add the line:
+<pre><code>127.0.0.1 genomed.tt</pre></code>
+
+4. We preload the server, go to the browser, and indicate in the address bar: http://genomed.tt. A page should open with a field for generating a QR code from the link.
 
 
 INSTALLATION
