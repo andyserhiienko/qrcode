@@ -108,6 +108,7 @@ sudo systemctl restart apache2
 sudo nano /var/www/myproject.tt/config/db.php
 
 ### 14. Set database access parameters:
+<pre><code>
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;port=3306;dbname=genomed',
@@ -120,6 +121,7 @@ return [
     //'schemaCacheDuration' => 60,
     //'schemaCache' => 'cache',
 ];
+</pre></code>
 
 ### 15. Run database migrations:
 php yii migrate
