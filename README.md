@@ -92,7 +92,7 @@ Installation way by Git
 </code></pre>
 
 ### 9. Activate host-config:
-<pre><code>sudo a2ensite laravel2.tt</pre></code>
+<pre><code>sudo a2ensite myproject.tt</pre></code>
 
 ### 10. Navigate to the project directory:
 <pre><code>cd /var/www/myproject.tt/</pre></code>
