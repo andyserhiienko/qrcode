@@ -66,6 +66,7 @@ sudo nano /etc/hosts
 sudo nano /etc/apache2/sites-available/myproject.tt.conf
 
 ### 8. Add the following configuration:
+```
 <VirtualHost *:80>
      ServerAdmin admin@myproject.tt
      ServerName myproject.tt
@@ -88,6 +89,7 @@ sudo nano /etc/apache2/sites-available/myproject.tt.conf
      ErrorLog ${APACHE_LOG_DIR}/myproject.tt_error.log
      CustomLog ${APACHE_LOG_DIR}/myproject.tt.tt_access.log combined
 </VirtualHost>
+```
 
 ### 9. Navigate to the project directory:
 /var/www/myproject.tt/
