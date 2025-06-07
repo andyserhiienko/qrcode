@@ -91,23 +91,26 @@ Installation method No. 1 By Git
 &lt;/VirtualHost&gt;
 </code></pre>
 
-### 9. Navigate to the project directory:
+### 9. Activate host-config:
+<pre><code>sudo a2ensite laravel2.tt</pre></code>
+
+### 10. Navigate to the project directory:
 <pre><code>cd /var/www/myproject.tt/</pre></code>
 
-### 10. Clone the repository:
+### 11. Clone the repository:
 <pre><code>git clone https://github.com/andyserhiienko/qrcode.git .</pre></code>
 
-### 11. Create a directory for storing QR codes and set ownership:
+### 12. Create a directory for storing QR codes and set ownership:
 <pre><code>sudo mkdir /var/www/myproject.tt/web/uploads</pre></code>
 <pre><code>sudo chown -R www-data:www-data /var/www/myproject.tt/web/uploads</pre></code>
 
-### 12. Restart Apache:
+### 13. Restart Apache:
 <pre><code>sudo systemctl restart apache2</pre></code>
 
-### 13. Open Yii2 database configuration file:
+### 14. Open Yii2 database configuration file:
 <pre><code>sudo nano /var/www/myproject.tt/config/db.php</pre></code>
 
-### 14. Set database access parameters:
+### 15. Set database access parameters:
 <pre><code>
 return [
     'class' => 'yii\db\Connection',
@@ -123,10 +126,10 @@ return [
 ];
 </pre></code>
 
-### 15. Run database migrations:
+### 16. Run database migrations:
 <pre><code>php yii migrate</pre></code>
 
-### 16. Open in your browser:
+### 17. Open in your browser:
 http//:myproject.tt
 
 
