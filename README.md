@@ -145,7 +145,10 @@ Installation method No. 2 By Docker
 3.1. For Windows, open the file C:\Windows\System32\drivers\etc\hosts in a block and add the line:
 <pre><code>127.0.0.1 genomed.tt</pre></code>
 
-4. We preload the server, go to the browser, and indicate in the address bar: http://genomed.tt. A page should open with a field for generating a QR code from the link.
+4. We preload the server, go to the browser, and indicate in the address bar: 
+<pre><code>http://genomed.tt</pre></code> 
+
+A page should open with a field for generating a QR code from the link.
 
 
 INSTALLATION
