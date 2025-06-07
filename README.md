@@ -44,26 +44,27 @@ Installation method No. 1 By Git
 --------------------------------
 
 ### 1. Install Apache on Ubuntu::
-sudo apt update
-sudo apt install apache2
+<pre><code>sudo apt update</pre></code>
+<pre><code>sudo apt install apache2</pre></code>
 
 ### 2. Install required PHP packages and libraries:
-sudo apt install -y libzip-dev zip unzip libpng-dev libjpeg-dev libonig-dev libxml2-dev php8.2 php8.2-mysql php8.2-zip php8.2-gd php8.2-mbstring php8.2-xml
+<pre><code>sudo apt install -y libzip-dev zip unzip libpng-dev libjpeg-dev libonig-dev libxml2-dev php8.2 php8.2-mysql php8.2-zip php8.2-gd php8.2-mbstring php8.2-xml
+</pre></code>
 
 ### 3. Create the project directory:
-sudo mkdir /var/www/myproject.tt
+<pre><code>sudo mkdir /var/www/myproject.tt</pre></code>
 
 ### 4. Set permissions:
-sudo chmod 755 -R /var/www/myproject.tt
+<pre><code>sudo chmod 755 -R /var/www/myproject.tt</pre></code>
 
 ### 5. Edit the system hosts file:
-sudo nano /etc/hosts
+<pre><code>sudo nano /etc/hosts</pre></code>
 
 ### 6. Add a host entry, save and close the file:
-127.0.0.1 myproject.tt
+<pre><code>127.0.0.1 myproject.tt</pre></code>
 
 ### 7. Create a virtual host configuration:
-sudo nano /etc/apache2/sites-available/myproject.tt.conf
+<pre><code>sudo nano /etc/apache2/sites-available/myproject.tt.conf</pre></code>
 
 ### 8. Add the following configuration:
 <pre><code>
@@ -92,20 +93,20 @@ sudo nano /etc/apache2/sites-available/myproject.tt.conf
 </code></pre>
 
 ### 9. Navigate to the project directory:
-/var/www/myproject.tt/
+<pre><code>cd /var/www/myproject.tt/</pre></code>
 
 ### 10. Clone the repository:
-git clone https://github.com/andyserhiienko/qrcode.git .
+<pre><code>git clone https://github.com/andyserhiienko/qrcode.git .</pre></code>
 
 ### 11. Create a directory for storing QR codes and set ownership:
-sudo mkdir /var/www/myproject.tt/web/uploads
-sudo chown -R www-data:www-data /var/www/myproject.tt/web/uploads
+<pre><code>sudo mkdir /var/www/myproject.tt/web/uploads</pre></code>
+<pre><code>sudo chown -R www-data:www-data /var/www/myproject.tt/web/uploads</pre></code>
 
 ### 12. Restart Apache:
-sudo systemctl restart apache2
+<pre><code>sudo systemctl restart apache2</pre></code>
 
 ### 13. Open Yii2 database configuration file:
-sudo nano /var/www/myproject.tt/config/db.php
+<pre><code>sudo nano /var/www/myproject.tt/config/db.php</pre></code>
 
 ### 14. Set database access parameters:
 <pre><code>
@@ -124,7 +125,7 @@ return [
 </pre></code>
 
 ### 15. Run database migrations:
-php yii migrate
+<pre><code>php yii migrate</pre></code>
 
 ### 16. Open in your browser:
 http//:myproject.tt
